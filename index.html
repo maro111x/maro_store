@@ -3,202 +3,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>maro store | المتجر الرسمي للشحن</title>
+<title>MARO STORE | افضل اسعار</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@800;900&family=Orbitron:wght@900&display=swap');
-:root{--red:#ff0033; --dark:#060606; --card:#0f0f0f;}
+:root{--red:#ff0033; --dark:#050505; --card:#0d0d0d;}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo';}
-body{background:var(--dark);color:#fff;overflow-x:hidden;}
+body{background:var(--dark);color:#fff;}
 
-/* لودينج سينمائي */
-#loader{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;animation:hide 1s 2.5s forwards;}
-#loader h1{font-family:'Orbitron';font-size:60px;color:var(--red);animation:glitch 0.3s infinite;}
-@keyframes hide{to{opacity:0;visibility:hidden;}}
-@keyframes glitch{0%{text-shadow:3px 0 cyan;}50%{text-shadow:-3px 0 lime;}}
+.topbar{background:#000;padding:20px;text-align:center;border-bottom:3px solid var(--red);}
+.topbar h1{font-family:'Orbitron';font-size:50px;color:var(--red);text-shadow:0 0 20px var(--red);}
+.topbar p{color:#aaa;font-size:18px;margin-top:5px;}
+.offer-bar{background:#1a0000;padding:12px;text-align:center;color:#ffcc00;font-weight:900;font-size:18px;}
 
-header{padding:40px 20px;text-align:center;border-bottom:2px solid var(--red);}
-header h1{font-size:70px;color:var(--red);font-family:'Orbitron';text-shadow:0 0 30px var(--red);}
-nav{margin-top:20px;}
-nav a{color:#aaa;text-decoration:none;margin:0 15px;font-size:18px;transition:0.3s;}
-nav a:hover{color:var(--red);}
+nav{display:flex;justify-content:center;gap:15px;padding:20px;background:#0a0a0a;flex-wrap:wrap;position:sticky;top:0;z-index:100;}
+nav button{background:#111;border:2px solid #333;color:#fff;padding:12px 25px;border-radius:10px;font-size:18px;font-weight:900;cursor:pointer;transition:0.3s;}
+nav button:hover{border-color:var(--red);background:var(--red);color:#000;transform:scale(1.05);}
 
-.container{max-width:1400px;margin:auto;padding:40px 20px;}
+.container{max-width:1300px;margin:auto;padding:30px 20px;}
 
-/* كروت الالعاب مع اللوجو */
-.games{margin:60px 0;}
-.games h2{font-size:40px;border-right:5px solid var(--red);padding-right:15px;margin-bottom:30px;}
+.games h2{font-size:40px;border-right:5px solid var(--red);padding-right:15px;margin:50px 0 25px;}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;}
-.card{background:var(--card);border:2px solid #222;border-radius:20px;padding:25px;transition:0.4s;position:relative;overflow:hidden;}
+.card{background:var(--card);border:2px solid #222;border-radius:18px;overflow:hidden;transition:0.4s;}
 .card:hover{border-color:var(--red);transform:translateY(-10px);box-shadow:0 0 40px rgba(255,0,51,0.4);}
-.card img{width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:15px;border:2px solid var(--red);}
-.card h3{font-size:24px;margin-bottom:10px;}
+.card img{width:100%;height:180px;object-fit:cover;border-bottom:2px solid var(--red);}
+.card-content{padding:20px;text-align:center;}
+.card h3{font-size:24px;margin-bottom:10px;color:#fff;}
 .price{font-size:35px;color:var(--red);font-weight:900;}
-.card button{background:var(--red);color:#000;border:none;padding:14px;width:100%;border-radius:12px;font-size:20px;font-weight:900;cursor:pointer;margin-top:15px;transition:0.2s;}
+.tag{font-size:12px;background:var(--red);color:#000;padding:3px 8px;border-radius:5px;margin-right:8px;}
+.card button{background:var(--red);color:#000;border:none;padding:15px;width:100%;border-radius:10px;font-size:20px;font-weight:900;cursor:pointer;margin-top:15px;transition:0.2s;}
 .card button:hover{background:#fff;transform:scale(1.05);}
 
-/* قسم الدفع */
-.payment{background:#0a0a0a;border:2px solid var(--red);padding:40px;border-radius:20px;margin:60px 0;text-align:center;}
-.payment h2{color:var(--red);font-size:35px;margin-bottom:20px;}
-.payment-methods{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:30px 0;}
-.method{background:#111;padding:20px 30px;border-radius:12px;border:2px solid #333;font-size:18px;}
-.method b{color:var(--red);}
-
-.rules{background:#0a0a0a;border-right:5px solid var(--red);padding:30px;border-radius:15px;}
-.rules li{font-size:18px;margin:12px 0;list-style:none;}
-.rules li::before{content:'✖ ';color:var(--red);}
-
-.cta{text-align:center;margin:50px 0;}
-.whatsapp{background:#25D366;color:#000;padding:25px 60px;border-radius:15px;font-size:28px;font-weight:900;text-decoration:none;display:inline-block;transition:0.3s;}
-.whatsapp:hover{background:#000;color:#25D366;box-shadow:0 0 40px #25D366;}
-
-/* تأثير الماوس */
-.cursor{position:fixed;width:20px;height:20px;border:2px solid var(--red);border-radius:50%;pointer-events:none;z-index:999;transition:0.1s;}
+.whatsapp{text-align:center;margin:60px 0;}
+.whatsapp a{background:#25D366;color:#000;padding:25px 60px;border-radius:15px;font-size:28px;font-weight:900;text-decoration:none;display:inline-block;}
+.whatsapp a:hover{box-shadow:0 0 50px #25D366;}
 </style>
 </head>
 <body>
 
-<div id="loader"><h1>maro store</h1><p>جاري التحميل...</p></div>
-<div class="cursor" id="cursor"></div>
+<!-- صوت النمر اول ما يفتح -->
+<audio id="roar" autoplay>
+  <source src="https://www.soundjay.com/mechanical/sounds/tiger-roar-01.mp3" type="audio/mpeg">
+</audio>
 
-<header>
-  <h1>maro store</h1>
-  <p>المتجر رقم 1 في شحن الالعاب</p>
-  <nav>
-    <a href="#pubg">PUBG</a>
-    <a href="#ff">Free Fire</a>
-    <a href="#fc">FC</a>
-    <a href="#valo">Valorant</a>
-    <a href="#payment">الدفع</a>
-  </nav>
-</header>
+<div class="topbar">
+  <h1>🔥 MARO STORE 🔥</h1>
+  <p>شحن فوري 100% | توصيل خلال 60 ثانية</p>
+</div>
+<div class="offer-bar">
+  الدفع فودافون كاش فقط
+</div>
+
+<nav>
+  <button onclick="scrollToSec('pubg')">PUBG</button>
+  <button onclick="scrollToSec('ff')">Free Fire</button>
+  <button onclick="scrollToSec('fc')">FC Mobile</button>
+  <button onclick="scrollToSec('valo')">Valorant</button>
+</nav>
 
 <div class="container">
 
   <!-- PUBG -->
-  <section class="games" id="pubg">
-    <h2>🔥 PUBG MOBILE</h2>
+  <section id="pubg" class="games">
+    <h2>باقات PUBG UC</h2>
     <div class="grid">
       <div class="card">
-        <img src="https://i.imgur.com/8Km7Z5E.jpg" alt="PUBG">
-        <h3>60 UC</h3>
-        <div class="price">85 جنيه</div>
-        <button onclick="buy('PUBG','60 UC','85')">شراء الان</button>
+        <img src="attachment://wa_image_7142561445689827826_7">
+        <div class="card-content">
+          <h3><span class="tag">بدون مكسب</span>60 UC</h3>
+          <div class="price">85 جنيه</div>
+          <button onclick="order('PUBG','60 UC','85')">اطلب الان</button>
+        </div>
       </div>
       <div class="card">
-        <img src="https://i.imgur.com/8Km7Z5E.jpg" alt="PUBG">
-        <h3>325 UC</h3>
-        <div class="price">420 جنيه</div>
-        <button onclick="buy('PUBG','325 UC','420')">شراء الان</button>
+        <img src="attachment://wa_image_7142561445689827826_7">
+        <div class="card-content">
+          <h3><span class="tag">بدون مكسب</span>325 UC</h3>
+          <div class="price">420 جنيه</div>
+          <button onclick="order('PUBG','325 UC','420')">اطلب الان</button>
+        </div>
       </div>
       <div class="card">
-        <img src="https://i.imgur.com/8Km7Z5E.jpg" alt="PUBG">
-        <h3>Royal Pass</h3>
-        <div class="price">480 جنيه</div>
-        <button onclick="buy('PUBG','Royal Pass','480')">شراء الان</button>
+        <img src="attachment://wa_image_7142561445689827826_7">
+        <div class="card-content">
+          <h3><span class="tag">+30ج</span>660 UC</h3>
+          <div class="price">870 جنيه</div>
+          <button onclick="order('PUBG','660 UC','870')">اطلب الان</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="attachment://wa_image_7142561445689827826_7">
+        <div class="card-content">
+          <h3><span class="tag">+30ج</span>1800 UC</h3>
+          <div class="price">2310 جنيه</div>
+          <button onclick="order('PUBG','1800 UC','2310')">اطلب الان</button>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FREE FIRE -->
-  <section class="games" id="ff">
-    <h2>💥 FREE FIRE</h2>
+  <section id="ff" class="games">
+    <h2>باقات Free Fire</h2>
     <div class="grid">
       <div class="card">
-        <img src="https://i.imgur.com/VwX4k2Q.jpg" alt="Free Fire">
-        <h3>110 جوهرة</h3>
-        <div class="price">50 جنيه</div>
-        <button onclick="buy('Free Fire','110 جوهرة','50')">شراء الان</button>
+        <img src="attachment://wa_image_7142561445689827826_5">
+        <div class="card-content">
+          <h3><span class="tag">بدون مكسب</span>110 جوهرة</h3>
+          <div class="price">50 جنيه</div>
+          <button onclick="order('Free Fire','110 جوهرة','50')">اطلب الان</button>
+        </div>
       </div>
       <div class="card">
-        <img src="https://i.imgur.com/VwX4k2Q.jpg" alt="Free Fire">
-        <h3>560 جوهرة</h3>
-        <div class="price">230 جنيه</div>
-        <button onclick="buy('Free Fire','560 جوهرة','230')">شراء الان</button>
+        <img src="attachment://wa_image_7142561445689827826_5">
+        <div class="card-content">
+          <h3><span class="tag">بدون مكسب</span>520 جوهرة</h3>
+          <div class="price">220 جنيه</div>
+          <button onclick="order('Free Fire','520 جوهرة','220')">اطلب الان</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="attachment://wa_image_7142561445689827826_1">
+        <div class="card-content">
+          <h3><span class="tag">+30ج</span>1120 جوهرة</h3>
+          <div class="price">480 جنيه</div>
+          <button onclick="order('Free Fire','1120 جوهرة','480')">اطلب الان</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="attachment://wa_image_7142561445689827826_1">
+        <div class="card-content">
+          <h3><span class="tag">+30ج</span>2180 جوهرة</h3>
+          <div class="price">900 جنيه</div>
+          <button onclick="order('Free Fire','2180 جوهرة','900')">اطلب الان</button>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FC -->
-  <section class="games" id="fc">
-    <h2>⚽ FC MOBILE</h2>
+  <section id="fc" class="games">
+    <h2>باقات FC Mobile</h2>
     <div class="grid">
       <div class="card">
-        <img src="https://i.imgur.com/9mP8Q2r.jpg" alt="FC">
-        <h3>520 نقطة</h3>
-        <div class="price">250 جنيه</div>
-        <button onclick="buy('FC','520 نقطة','250')">شراء الان</button>
+        <img src="attachment://wa_image_7142561445689827826_6">
+        <div class="card-content">
+          <h3><span class="tag">بدون مكسب</span>520 نقطة</h3>
+          <div class="price">250 جنيه</div>
+          <button onclick="order('FC','520 نقطة','250')">اطلب الان</button>
+        </div>
       </div>
       <div class="card">
-        <img src="https://i.imgur.com/9mP8Q2r.jpg" alt="FC">
-        <h3>1070 نقطة</h3>
-        <div class="price">500 جنيه</div>
-        <button onclick="buy('FC','1070 نقطة','500')">شراء الان</button>
+        <img src="attachment://wa_image_7142561445689827826_2">
+        <div class="card-content">
+          <h3><span class="tag">+30ج</span>1050 نقطة</h3>
+          <div class="price">530 جنيه</div>
+          <button onclick="order('FC','1050 نقطة','530')">اطلب الان</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="attachment://wa_image_7142561445689827826_2">
+        <div class="card-content">
+          <h3><span class="tag">+30ج</span>2200 نقطة</h3>
+          <div class="price">1030 جنيه</div>
+          <button onclick="order('FC','2200 نقطة','1030')">اطلب الان</button>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- VALORANT -->
-  <section class="games" id="valo">
-    <h2>🎯 VALORANT</h2>
+  <section id="valo" class="games">
+    <h2>باقات Valorant Points</h2>
     <div class="grid">
       <div class="card">
-        <img src="https://i.imgur.com/5Lk3Z9P.jpg" alt="Valorant">
-        <h3>1000 VP</h3>
-        <div class="price">350 جنيه</div>
-        <button onclick="buy('Valorant','1000 VP','350')">شراء الان</button>
+        <img src="attachment://wa_image_7142561445689827826_3">
+        <div class="card-content">
+          <h3><span class="tag">بدون مكسب</span>475 VP</h3>
+          <div class="price">170 جنيه</div>
+          <button onclick="order('Valorant','475 VP','170')">اطلب الان</button>
+        </div>
       </div>
       <div class="card">
-        <img src="https://i.imgur.com/5Lk3Z9P.jpg" alt="Valorant">
-        <h3>2050 VP</h3>
-        <div class="price">700 جنيه</div>
-        <button onclick="buy('Valorant','2050 VP','700')">شراء الان</button>
+        <img src="attachment://wa_image_7142561445689827826_8">
+        <div class="card-content">
+          <h3><span class="tag">+30ج</span>1000 VP</h3>
+          <div class="price">370 جنيه</div>
+          <button onclick="order('Valorant','1000 VP','370')">اطلب الان</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="attachment://wa_image_7142561445689827826_8">
+        <div class="card-content">
+          <h3><span class="tag">+30ج</span>2050 VP</h3>
+          <div class="price">710 جنيه</div>
+          <button onclick="order('Valorant','2050 VP','710')">اطلب الان</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- الدفع -->
-  <section class="payment" id="payment">
-    <h2>💳 طرق الدفع المتاحة</h2>
-    <div class="payment-methods">
-      <div class="method"><b>واتساب</b><br>تحويل فودافون كاش</div>
-      <div class="method"><b>يدوي</b><br>مقابلة في الاسكندرية</div>
-      <div class="method"><b>انستاباي</b><br>للطلبات الكبيرة</div>
-    </div>
-    <p>بعد الدفع ابعت سكرين التحويل + ID اللعبة</p>
-  </section>
-
-  <!-- القوانين -->
-  <section class="rules">
-    <h2 style="color:var(--red);margin-bottom:20px;">📜 القوانين الصارمة</h2>
-    <ul>
-      <li>اقل شحن 50 جنيه</li>
-      <li>الشحن خلال 5 دقايق من استلام التحويل</li>
-      <li>ممنوع الاسترجاع بعد الشحن</li>
-      <li>مسئولية ال ID عليك 100%</li>
-      <li>مفيش شحن عربيات - حساب فقط</li>
-    </ul>
-  </section>
-
-  <!-- CTA -->
-  <div class="cta">
-    <a href="https://wa.me/201022585692" class="whatsapp">📱 اطلب على واتساب 01022585692</a>
+  <div class="whatsapp">
+    <a href="https://wa.me/201022585692">📱 اطلب واتساب 01022585692</a>
   </div>
 
 </div>
 
 <script>
-// مؤشر الماوس مرعب
-const cursor = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX - 10 + 'px';
-  cursor.style.top = e.clientY - 10 + 'px';
-});
+function scrollToSec(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
 
-// نظام الشراء + تحويل واتساب
-function buy(game, item, price){
+function order(game,item,price){
   let id = prompt(`تم اختيار: ${game} - ${item} - ${price}ج\nمن فضلك ادخل ID اللعبة:`);
   if(id){
-    let msg = `مرحبا maro store
+    let msg = `مرحبا MARO STORE
 اريد شحن:
 اللعبة: ${game}
 الباقة: ${item}
@@ -207,15 +223,7 @@ function buy(game, item, price){
     window.open(`https://wa.me/201022585692?text=${encodeURIComponent(msg)}`,'_blank');
   }
 }
-
-// تأثير صوت تشويش عشوائي
-setInterval(()=>{
-  if(Math.random() > 0.98){
-    document.body.style.filter = 'invert(1)';
-    setTimeout(()=>{document.body.style.filter='none'},80);
-  }
-},1000);
 </script>
 
 </body>
-        </html>
+</html>
