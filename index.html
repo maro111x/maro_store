@@ -1,64 +1,255 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>maro store - ممنوع</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@900&display=swap');
-*{margin:0;padding:0;font-family:'Cairo';cursor:crosshair;}
-body{background:#000;overflow-x:hidden;color:#ff0000;}
-/* شاشة تشويش اول الدخول */
-#intro{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;animation:fadeOut 2s 1s forwards;}
-@keyframes fadeOut{to{opacity:0;visibility:hidden;}}
-.glitch-text{font-size:80px;color:#ff0000;text-align:center;margin-top:40vh;animation:glitch 0.2s infinite;}
-@keyframes glitch{0%{text-shadow:2px 0 red;}25%{text-shadow:-2px 0 cyan;}50%{text-shadow:2px 0 lime;}}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>maro store | شحن العاب</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@800;900&display=swap');
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo', sans-serif;}
+    
+    body{
+      background:#050505;
+      color:#e0e0e0;
+      overflow-x:hidden;
+    }
 
-/* العين بتتابعك */
-.eye{position:fixed;width:200px;height:200px;border:5px solid red;border-radius:50%;box-shadow:0 0 50px red;pointer-events:none;z-index:1000;transition:0.1s;}
+    /* خلفية شبكة حمرا */
+    body::before{
+      content:'';
+      position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      background-image: 
+        linear-gradient(rgba(255,0,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,0,0,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index:0;
+    }
 
-/* الكروت بتطلع من الظلمة */
-.product{opacity:0;transform:translateY(50px);animation:reveal 1s forwards;border:3px solid red;background:#0a0a0a;padding:20px;margin:15px;width:280px;display:inline-block;}
-@keyframes reveal{to{opacity:1;transform:translateY(0);}}
-.product:nth-child(1){animation-delay:0.3s}
-.product:nth-child(2){animation-delay:0.5s}
-.product:nth-child(3){animation-delay:0.7s}
+    .container{max-width:1200px;margin:auto;padding:20px;position:relative;z-index:1;}
 
-/* دم بينقط */
-.blood{position:fixed;top:-50px;width:4px;height:80px;background:linear-gradient(transparent,red);animation:drop 3s infinite;}
-@keyframes drop{to{top:100vh;opacity:0;}}
-</style>
+    header{
+      text-align:center;
+      padding:60px 20px;
+      border-bottom:2px solid #ff0000;
+    }
+    header h1{
+      font-size:65px;
+      color:#ff0000;
+      text-shadow:0 0 20px #ff0000;
+      font-weight:900;
+    }
+    header p{color:#aaa;font-size:18px;margin-top:10px;}
+
+    .alert{
+      background:#1a0000;
+      border-right:5px solid #ff0000;
+      padding:20px;
+      margin:30px 0;
+      border-radius:10px;
+      font-size:18px;
+    }
+    .alert b{color:#ff0000;}
+
+    .games-section{margin:50px 0;}
+    .game-title{
+      font-size:35px;
+      color:#fff;
+      margin-bottom:25px;
+      border-bottom:2px solid #ff0000;
+      padding-bottom:10px;
+      display:inline-block;
+    }
+
+    .products-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:#0f0f0f;
+      border:2px solid #222;
+      border-radius:15px;
+      padding:25px;
+      text-align:center;
+      transition:0.3s;
+      position:relative;
+    }
+    .card:hover{
+      border-color:#ff0000;
+      transform:translateY(-8px);
+      box-shadow:0 10px 30px rgba(255,0,0,0.3);
+    }
+    .card h3{font-size:22px;color:#fff;margin-bottom:10px;}
+    .price{font-size:32px;color:#ff0000;font-weight:900;margin:15px 0;}
+    .card button{
+      background:#ff0000;
+      color:#000;
+      border:none;
+      padding:12px 25px;
+      border-radius:10px;
+      font-size:18px;
+      font-weight:900;
+      cursor:pointer;
+      width:100%;
+      transition:0.2s;
+    }
+    .card button:hover{background:#fff;transform:scale(1.05);}
+
+    .rules{
+      background:#0a0a0a;
+      border:2px solid #ff0000;
+      border-radius:15px;
+      padding:40px;
+      margin:60px 0;
+    }
+    .rules h2{color:#ff0000;font-size:32px;text-align:center;margin-bottom:25px;}
+    .rules ul{list-style:none;}
+    .rules li{
+      font-size:18px;
+      padding:12px 0;
+      border-bottom:1px solid #222;
+    }
+    .rules li::before{content:'✖ ';color:#ff0000;font-weight:900;margin-left:10px;}
+
+    .cta{
+      text-align:center;
+      padding:50px 20px;
+    }
+    .whatsapp-btn{
+      background:#25D366;
+      color:#000;
+      padding:20px 50px;
+      border-radius:15px;
+      text-decoration:none;
+      font-size:26px;
+      font-weight:900;
+      display:inline-block;
+      border:3px solid #25D366;
+      transition:0.3s;
+    }
+    .whatsapp-btn:hover{background:#000;color:#25D366;box-shadow:0 0 30px #25D366;}
+
+    footer{text-align:center;padding:30px;color:#555;border-top:1px solid #222;}
+  </style>
 </head>
 <body>
 
-<div id="intro"><div class="glitch-text">WARNING</div></div>
-<div class="eye" id="eye"></div>
+<div class="container">
+  <header>
+    <h1>💀 maro store 💀</h1>
+    <p>اسرع متجر شحن العاب في مصر</p>
+  </header>
+
+  <div class="alert">
+    <b>⚠️ تنبيه هام:</b> الشحن يتم خلال 5 دقايق بعد التحويل. ممنوع الاسترجاع بعد الشحن.
+  </div>
+
+  <!-- PUBG -->
+  <div class="games-section">
+    <h2 class="game-title">🔥 PUBG MOBILE</h2>
+    <div class="products-grid">
+      <div class="card">
+        <h3>60 UC</h3>
+        <div class="price">85 جنيه</div>
+        <button onclick="order('PUBG 60 UC - 85ج')">اطلب الان</button>
+      </div>
+      <div class="card">
+        <h3>325 UC</h3>
+        <div class="price">420 جنيه</div>
+        <button onclick="order('PUBG 325 UC - 420ج')">اطلب الان</button>
+      </div>
+      <div class="card">
+        <h3>660 UC</h3>
+        <div class="price">840 جنيه</div>
+        <button onclick="order('PUBG 660 UC - 840ج')">اطلب الان</button>
+      </div>
+      <div class="card">
+        <h3>Royal Pass</h3>
+        <div class="price">480 جنيه</div>
+        <button onclick="order('PUBG Royal Pass - 480ج')">اطلب الان</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FREE FIRE -->
+  <div class="games-section">
+    <h2 class="game-title">💥 FREE FIRE</h2>
+    <div class="products-grid">
+      <div class="card">
+        <h3>110 جوهرة</h3>
+        <div class="price">50 جنيه</div>
+        <button onclick="order('FF 110 جوهرة - 50ج')">اطلب الان</button>
+      </div>
+      <div class="card">
+        <h3>560 جوهرة</h3>
+        <div class="price">230 جنيه</div>
+        <button onclick="order('FF 560 جوهرة - 230ج')">اطلب الان</button>
+      </div>
+      <div class="card">
+        <h3>1120 جوهرة</h3>
+        <div class="price">450 جنيه</div>
+        <button onclick="order('FF 1120 جوهرة - 450ج')">اطلب الان</button>
+      </div>
+      <div class="card">
+        <h3>العضوية الشهرية</h3>
+        <div class="price">280 جنيه</div>
+        <button onclick="order('FF عضوية شهرية - 280ج')">اطلب الان</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FC + VALO -->
+  <div class="games-section">
+    <h2 class="game-title">⚽ FC MOBILE</h2>
+    <div class="products-grid">
+      <div class="card"><h3>520 نقطة</h3><div class="price">250 جنيه</div><button onclick="order('FC 520 - 250ج')">اطلب الان</button></div>
+      <div class="card"><h3>1070 نقطة</h3><div class="price">500 جنيه</div><button onclick="order('FC 1070 - 500ج')">اطلب الان</button></div>
+    </div>
+  </div>
+
+  <div class="games-section">
+    <h2 class="game-title">🎯 VALORANT</h2>
+    <div class="products-grid">
+      <div class="card"><h3>1000 VP</h3><div class="price">350 جنيه</div><button onclick="order('Valo 1000VP - 350ج')">اطلب الان</button></div>
+      <div class="card"><h3>2050 VP</h3><div class="price">700 جنيه</div><button onclick="order('Valo 2050VP - 700ج')">اطلب الان</button></div>
+    </div>
+  </div>
+
+  <!-- القوانين -->
+  <div class="rules">
+    <h2>🚫 قوانين المتجر 🚫</h2>
+    <ul>
+      <li>اقل مبلغ للشحن 50 جنيه - مفيش قطاعي</li>
+      <li>الدفع واتساب فقط. ممنوع فودافون كاش او فيزا</li>
+      <li>ابعت ID اللعبة صح. الغلط مسئوليتك</li>
+      <li>الشحن خلال 5 دقايق من التحويل</li>
+      <li>ممنوع العربيات. شحن مباشر للحساب فقط</li>
+      <li>ممنوع الاسترجاع بعد اتمام الشحن</li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2 style="font-size:35px;color:#fff;margin-bottom:20px;">جاهز تشحن؟</h2>
+    <a href="https://wa.me/201022585692" class="whatsapp-btn">📱 واتساب 01022585692</a>
+  </div>
+
+  <footer>
+    maro store © 2026 - جميع الحقوق محفوظة
+  </footer>
+</div>
 
 <script>
-// العين بتتابع الماوس
-document.addEventListener('mousemove',e=>{
-  document.getElementById('eye').style.left=e.clientX-100+'px';
-  document.getElementById('eye').style.top=e.clientY-100+'px';
-});
-// دم بينقط
-for(let i=0;i<15;i++){
-  let b=document.createElement('div');b.className='blood';
-  b.style.left=Math.random()*100+'%';b.style.animationDelay=Math.random()*3+'s';
-  document.body.appendChild(b);
+// الزرار يبعت للواتساب بالمنتج
+function order(item){
+  let msg = `السلام عليكم 
+عايز اشحن: ${item}
+ID اللعبة: `;
+  window.open(`https://wa.me/201022585692?text=${encodeURIComponent(msg)}`,'_blank');
 }
 </script>
-
-<h1 style="text-align:center;font-size:60px;margin:40px;text-shadow:0 0 30px red;">💀 maro store 💀</h1>
-
-<div style="text-align:center;">
-<div class="product"><h3>PUBG 60 UC</h3><div style="font-size:28px;">85 جنيه</div></div>
-<div class="product"><h3>Free Fire 560</h3><div style="font-size:28px;">230 جنيه</div></div>
-<div class="product"><h3>FC 1070 نقطة</h3><div style="font-size:28px;">500 جنيه</div></div>
-<div class="product"><h3>Valorant 1000VP</h3><div style="font-size:28px;">350 جنيه</div></div>
-</div>
-
-<div style="text-align:center;margin:50px;">
-<a href="https://wa.me/201022585692" style="background:#25D366;color:#000;padding:25px 60px;font-size:28px;border-radius:15px;text-decoration:none;font-weight:900;">اطلب واتساب 01022585692</a>
-</div>
 
 </body>
 </html>
