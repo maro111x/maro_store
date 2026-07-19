@@ -17,12 +17,14 @@ nav a:hover{color:#ff0033;text-shadow:0 0 10px #ff0033}
 @keyframes glow{0%,100%{filter:drop-shadow(0 0 10px #ff0033)}50%{filter:drop-shadow(0 0 30px #00ffaa)}}
 .section{padding:100px 5%}
 h2{text-align:center;font-size:50px;margin-bottom:60px;color:#ff0033}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px}
 .card{background:linear-gradient(135deg,#0a0a0a,#1a0010);border:2px solid #333;border-radius:20px;padding:20px;text-align:center;transition:0.4s}
 .card:hover{border-color:#ff0033;transform:translateY(-15px) scale(1.03);box-shadow:0 20px 50px rgba(255,0,51,0.4)}
 .card img{width:100%;height:140px;object-fit:cover;border-radius:15px;margin-bottom:15px;border:2px solid #ff0033}
 .price{color:#00ffaa;font-size:30px;font-weight:900;margin:10px 0}
-.btn{background:#ff0033;color:#000;border:none;padding:14px;width:100%;border-radius:12px;font-size:18px;font-weight:900;cursor:pointer;margin-top:15px;transition:0.3s}
+.input-id{width:100%;padding:12px;margin:10px 0;border-radius:10px;border:2px solid #ff0033;background:#111;color:#fff;font-size:16px;text-align:center;font-family:'Cairo'}
+.input-id:focus{outline:none;border-color:#00ffaa}
+.btn{background:#ff0033;color:#000;border:none;padding:14px;width:100%;border-radius:12px;font-size:18px;font-weight:900;cursor:pointer;margin-top:10px;transition:0.3s}
 .btn:hover{background:#00ffaa;transform:scale(1.05)}
 </style>
 </head>
@@ -36,7 +38,6 @@ h2{text-align:center;font-size:50px;margin-bottom:60px;color:#ff0033}
 
 <nav>
   <a onmouseenter="play('hover')" onclick="play('click')">PUBG</a>
-  <a onmouseenter="play('hover')" onclick="play('click')">FREE FIRE</a>
   <a onmouseenter="play('hover')" onclick="play('click')">VALORANT</a>
   <a onmouseenter="play('hover')" onclick="play('click')">FC MOBILE</a>
 </nav>
@@ -46,43 +47,83 @@ h2{text-align:center;font-size:50px;margin-bottom:60px;color:#ff0033}
   <p style="font-size:24px;margin-top:20px">شحن فوري • اسرع تسليم • دعم 24 ساعة</p>
 </section>
 
-<!-- PUBG - سعر كودا + الزيادة -->
+<!-- PUBG -->
 <section class="section">
   <h2>PUBG UC</h2>
   <div class="grid">
-    <div class="card" onmouseenter="play('hover')"><img src="images/pubg60.jpg"><h3>60 UC</h3><div class="price">63 جنيه</div><button class="btn" onclick="play('click');order('60 UC PUBG')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/pubg325.jpg"><h3>325 UC</h3><div class="price">314 جنيه</div><button class="btn" onclick="play('click');order('325 UC PUBG')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/pubg660.jpg"><h3>660 UC</h3><div class="price">618 جنيه</div><button class="btn" onclick="play('click');order('660 UC PUBG')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/pubg1800.jpg"><h3>1800 UC</h3><div class="price">1980 جنيه</div><button class="btn" onclick="play('click');order('1800 UC PUBG')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/pubg3850.jpg"><h3>3850 UC</h3><div class="price">2974 جنيه</div><button class="btn" onclick="play('click');order('3850 UC PUBG')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/pubg8100.jpg"><h3>8100 UC</h3><div class="price">6120 جنيه</div><button class="btn" onclick="play('click');order('8100 UC PUBG')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')">
+      <img src="images/pubg60.jpg"><h3>60 UC</h3><div class="price">63 جنيه</div>
+      <input type="text" class="input-id" placeholder="اكتب معرف اللاعب ID" id="pubg60">
+      <button class="btn" onclick="play('click');orderWithID('60 UC PUBG','pubg60')">اطلب الان</button>
+    </div>
+    <div class="card" onmouseenter="play('hover')">
+      <img src="images/pubg325.jpg"><h3>325 UC</h3><div class="price">314 جنيه</div>
+      <input type="text" class="input-id" placeholder="اكتب معرف اللاعب ID" id="pubg325">
+      <button class="btn" onclick="play('click');orderWithID('325 UC PUBG','pubg325')">اطلب الان</button>
+    </div>
+    <div class="card" onmouseenter="play('hover')">
+      <img src="images/pubg660.jpg"><h3>660 UC</h3><div class="price">618 جنيه</div>
+      <input type="text" class="input-id" placeholder="اكتب معرف اللاعب ID" id="pubg660">
+      <button class="btn" onclick="play('click');orderWithID('660 UC PUBG','pubg660')">اطلب الان</button>
+    </div>
+    <div class="card" onmouseenter="play('hover')">
+      <img src="images/pubg3850.jpg"><h3>3850 UC</h3><div class="price">2974 جنيه</div>
+      <input type="text" class="input-id" placeholder="اكتب معرف اللاعب ID" id="pubg3850">
+      <button class="btn" onclick="play('click');orderWithID('3850 UC PUBG','pubg3850')">اطلب الان</button>
+    </div>
   </div>
 </section>
 
-<!-- VALORANT - سعر كودا + الزيادة -->
+<!-- VALORANT -->
 <section class="section">
   <h2>VALORANT POINTS</h2>
   <div class="grid">
-    <div class="card" onmouseenter="play('hover')"><img src="images/valo475.jpg"><h3>475 VP</h3><div class="price">245 جنيه</div><button class="btn" onclick="play('click');order('475 VP VALO')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/valo1000.jpg"><h3>1000 VP</h3><div class="price">500 جنيه</div><button class="btn" onclick="play('click');order('1000 VP VALO')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/valo2050.jpg"><h3>2050 VP</h3><div class="price">980 جنيه</div><button class="btn" onclick="play('click');order('2050 VP VALO')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/valo3650.jpg"><h3>3650 VP</h3><div class="price">1730 جنيه</div><button class="btn" onclick="play('click');order('3650 VP VALO')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/valo5350.jpg"><h3>5350 VP</h3><div class="price">2430 جنيه</div><button class="btn" onclick="play('click');order('5350 VP VALO')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/valo11000.jpg"><h3>11000 VP</h3><div class="price">4880 جنيه</div><button class="btn" onclick="play('click');order('11000 VP VALO')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')">
+      <img src="images/valo475.jpg"><h3>475 VP</h3><div class="price">245 جنيه</div>
+      <input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo475">
+      <button class="btn" onclick="play('click');orderWithID('475 VP VALO','valo475')">اطلب الان</button>
+    </div>
+    <div class="card" onmouseenter="play('hover')">
+      <img src="images/valo1000.jpg"><h3>1000 VP</h3><div class="price">500 جنيه</div>
+      <input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo1000">
+      <button class="btn" onclick="play('click');orderWithID('1000 VP VALO','valo1000')">اطلب الان</button>
+    </div>
+    <div class="card" onmouseenter="play('hover')">
+      <img src="images/valo2050.jpg"><h3>2050 VP</h3><div class="price">980 جنيه</div>
+      <input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo2050">
+      <button class="btn" onclick="play('click');orderWithID('2050 VP VALO','valo2050')">اطلب الان</button>
+    </div>
+    <div class="card" onmouseenter="play('hover')">
+      <img src="images/valo3650.jpg"><h3>3650 VP</h3><div class="price">1730 جنيه</div>
+      <input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo3650">
+      <button class="btn" onclick="play('click');orderWithID('3650 VP VALO','valo3650')">اطلب الان</button></div>
   </div>
 </section>
 
-<!-- FC MOBILE - سعر كودا + الزيادة -->
+<!-- FC MOBILE -->
 <section class="section">
   <h2>FC MOBILE POINTS</h2>
   <div class="grid">
-    <div class="card" onmouseenter="play('hover')"><img src="images/fc40.jpg"><h3>40 نقطة</h3><div class="price">25 جنيه</div><button class="btn" onclick="play('click');order('40 نقطة FC')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/fc100.jpg"><h3>100 نقطة</h3><div class="price">55 جنيه</div><button class="btn" onclick="play('click');order('100 نقطة FC')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/fc520.jpg"><h3>520 نقطة</h3><div class="price">270 جنيه</div><button class="btn" onclick="play('click');order('520 نقطة FC')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/fc1070.jpg"><h3>1070 نقطة</h3><div class="price">520 جنيه</div><button class="btn" onclick="play('click');order('1070 نقطة FC')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/fc2200.jpg"><h3>2200 نقطة</h3><div class="price">1030 جنيه</div><button class="btn" onclick="play('click');order('2200 نقطة FC')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/fc5750.jpg"><h3>5750 نقطة</h3><div class="price">2530 جنيه</div><button class="btn" onclick="play('click');order('5750 نقطة FC')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="images/fc12000.jpg"><h3>12000 نقطة</h3><div class="price">5030 جنيه</div><button class="btn" onclick="play('click');order('12000 نقطة FC')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')">
+      <img src="images/fc100.jpg"><h3>100 نقطة</h3><div class="price">55 جنيه</div>
+      <input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc100">
+      <button class="btn" onclick="play('click');orderWithID('100 نقطة FC','fc100')">اطلب الان</button>
+    </div>
+    <div class="card" onmouseenter="play('hover')">
+      <img src="images/fc520.jpg"><h3>520 نقطة</h3><div class="price">270 جنيه</div>
+      <input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc520">
+      <button class="btn" onclick="play('click');orderWithID('520 نقطة FC','fc520')">اطلب الان</button>
+    </div>
+    <div class="card" onmouseenter="play('hover')">
+      <img src="images/fc1070.jpg"><h3>1070 نقطة</h3><div class="price">520 جنيه</div>
+      <input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc1070">
+      <button class="btn" onclick="play('click');orderWithID('1070 نقطة FC','fc1070')">اطلب الان</button>
+    </div>
+    <div class="card" onmouseenter="play('hover')">
+      <img src="images/fc2200.jpg"><h3>2200 نقطة</h3><div class="price">1030 جنيه</div>
+      <input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc2200">
+      <button class="btn" onclick="play('click');orderWithID('2200 نقطة FC','fc2200')">اطلب الان</button>
+    </div>
   </div>
 </section>
 
@@ -95,13 +136,21 @@ for(let i=0;i<25;i++){let m=new THREE.Mesh(geo,mat);m.position.set(Math.random()
 function animate(){requestAnimationFrame(animate);scene.children.forEach(o=>{o.rotation.x+=0.01;o.rotation.y+=0.01});renderer.render(scene,camera)}
 animate();
 
-// Sounds - زئير اعلى
+// Sounds
 const roar = document.getElementById('roar');
-roar.volume = 1.0; // اعلى حاجة
+roar.volume = 1.0;
 window.addEventListener('load', ()=>{roar.play().catch(()=>{})});
 
 function play(id){let s=document.getElementById(id);s.volume=0.5;s.currentTime=0;s.play().catch(()=>{})}
-function order(x){window.open(`https://wa.me/201022585692?text=عايز ${x} من MARO STOR`,'_blank')}
+
+function orderWithID(product, inputId){
+  let id = document.getElementById(inputId).value;
+  if(id.trim() === ""){
+    alert("لازم تكتب معرف اللاعب ID الاول");
+    return;
+  }
+  window.open(`https://wa.me/201022585692?text=عايز ${product}%0Aالمعرف: ${id}%0Aمن MARO STOR`,'_blank')
+}
 </script>
 </body>
 </html>
