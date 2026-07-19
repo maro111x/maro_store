@@ -2,69 +2,98 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>MARO STOR</title>
+<title>MARO STOR - المتجر الرسمي</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght=900&family=Cairo:wght=800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght=900&family=Cairo:wght=800;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#030303;color:#fff;font-family:'Cairo';overflow-x:hidden}
-nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);display:flex;gap:30px;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);padding:15px 40px;border-radius:50px;border:1px solid #ff0033;z-index:1000}
-nav a{color:#fff;text-decoration:none;font-weight:900;transition:0.3s}
-nav a:hover{color:#ff0033;transform:scale(1.1)}
-.hero{height:100vh;display:flex;align-items:center;justify-content:space-between;padding:0 10%;background:radial-gradient(circle at 50% 50%, #1a0005, #030303)}
-.robot{width:400px;height:400px;background:url('https://i.imgur.com/JqYeZ9y.png') center/contain no-repeat;filter:drop-shadow(0 0 30px #ff0033);animation:float 3s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
-.hero-text h1{font-family:'Orbitron';font-size:70px;background:linear-gradient(90deg,#ff0033,#ff6600,#ff0033);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-text p{font-size:22px;margin:20px 0;color:#aaa}
-.btn{background:#ff0033;color:#000;border:none;padding:15px 40px;border-radius:10px;font-size:20px;font-weight:900;cursor:pointer;transition:0.3s;box-shadow:0 0 20px #ff0033}
-.btn:hover{background:#fff;box-shadow:0 0 40px #fff}
-.section{padding:100px 10%}
-h2{text-align:center;font-size:45px;margin-bottom:50px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
-.card{background:#0a0a0a;border:2px solid #222;border-radius:20px;padding:30px;text-align:center;transition:0.4s}
-.card:hover{border-color:#ff0033;transform:translateY(-10px);box-shadow:0 10px 30px rgba(255,0,51,0.3)}
-.price{color:#ff0033;font-size:35px;font-weight:900;margin:15px 0}
+body{background:#000;color:#fff;font-family:'Cairo';overflow-x:hidden}
+#canvas3d{position:fixed;top:0;left:0;z-index:-1}
+nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);display:flex;gap:25px;background:rgba(0,0,0,0.7);backdrop-filter:blur(15px);padding:15px 35px;border-radius:50px;border:2px solid #ff0033;z-index:1000}
+nav a{color:#fff;text-decoration:none;font-weight:900;font-size:16px;transition:0.3s}
+nav a:hover{color:#ff0033;text-shadow:0 0 10px #ff0033}
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column}
+.hero h1{font-family:'Orbitron';font-size:90px;background:linear-gradient(90deg,#ff0033,#00ffaa,#ff0033);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 2s infinite}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 10px #ff0033)}50%{filter:drop-shadow(0 0 30px #00ffaa)}}
+.section{padding:100px 5%}
+h2{text-align:center;font-size:50px;margin-bottom:60px;color:#ff0033}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
+.card{background:linear-gradient(135deg,#0a0a0a,#1a0010);border:2px solid #333;border-radius:25px;padding:25px;text-align:center;transition:0.4s;cursor:pointer}
+.card:hover{border-color:#ff0033;transform:translateY(-15px) scale(1.03);box-shadow:0 20px 50px rgba(255,0,51,0.4)}
+.card img{width:100%;height:150px;object-fit:cover;border-radius:15px;margin-bottom:15px}
+.price{color:#00ffaa;font-size:32px;font-weight:900;margin:10px 0}
+.tag{font-size:12px;background:#ff0033;color:#000;padding:4px 10px;border-radius:6px;font-weight:900}
+.btn{background:#ff0033;color:#000;border:none;padding:14px;width:100%;border-radius:12px;font-size:20px;font-weight:900;cursor:pointer;margin-top:15px;transition:0.3s}
+.btn:hover{background:#00ffaa;transform:scale(1.05)}
 </style>
 </head>
 <body>
 
-<audio id="tick" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+<canvas id="canvas3d"></canvas>
+
+<audio id="hover" src="https://www.soundjay.com/buttons/sounds/button-09.mp3"></audio>
+<audio id="click" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+<audio id="roar" src="https://www.soundjay.com/mechanical/sounds/tiger-roar-01.mp3"></audio>
 
 <nav>
-  <a onclick="s()">PUBG</a>
-  <a onclick="s()">FREE FIRE</a>
-  <a onclick="s()">VALORANT</a>
-  <a onclick="s()">CONTACT</a>
+  <a onmouseenter="play('hover')" onclick="play('click')">PUBG</a>
+  <a onmouseenter="play('hover')" onclick="play('click')">FREE FIRE</a>
+  <a onmouseenter="play('hover')" onclick="play('click')">VALORANT</a>
+  <a onmouseenter="play('hover')" onclick="play('click')">FC MOBILE</a>
 </nav>
 
 <section class="hero">
-  <div class="hero-text">
-    <h1>MARO STOR</h1>
-    <p>شحن فوري لجميع الألعاب<br>اسرع من البرق ⚡</p>
-    <button class="btn" onclick="s();window.open('https://wa.me/201022585692')">اطلب دلوقتي</button>
-  </div>
-  <div class="robot"></div>
+  <h1>MARO STOR</h1>
+  <p style="font-size:24px;margin-top:20px">شحن فوري • اسعار حرق • دعم 24 ساعة</p>
+  <button class="btn" style="width:250px;margin-top:30px" onclick="play('roar')">دوس هنا</button>
 </section>
 
 <section class="section">
   <h2>PUBG UC</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>60 UC</h3>
-      <div class="price">85 جنيه</div>
-      <button class="btn" onclick="s();order('60 UC')">اطلب</button>
-    </div>
-    <div class="card">
-      <h3>660 UC</h3>
-      <div class="price">870 جنيه</div>
-      <button class="btn" onclick="s();order('660 UC')">اطلب</button>
-    </div>
+  <div class="grid">
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/8KmNp6G.jpg"><h3><span class="tag">بدون مكسب</span> 60 UC</h3><div class="price">85 جنيه</div><button class="btn" onclick="play('click');order('60 UC PUBG')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/8KmNp6G.jpg"><h3><span class="tag">+30ج</span> 325 UC</h3><div class="price">450 جنيه</div><button class="btn" onclick="play('click');order('325 UC PUBG')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/8KmNp6G.jpg"><h3><span class="tag">+30ج</span> 660 UC</h3><div class="price">870 جنيه</div><button class="btn" onclick="play('click');order('660 UC PUBG')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/8KmNp6G.jpg"><h3><span class="tag">+30ج</span> 1800 UC</h3><div class="price">2300 جنيه</div><button class="btn" onclick="play('click');order('1800 UC PUBG')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/8KmNp6G.jpg"><h3><span class="tag">+30ج</span> 3850 UC</h3><div class="price">4800 جنيه</div><button class="btn" onclick="play('click');order('3850 UC PUBG')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/8KmNp6G.jpg"><h3><span class="tag">+30ج</span> 8100 UC</h3><div class="price">9900 جنيه</div><button class="btn" onclick="play('click');order('8100 UC PUBG')">اطلب الان</button></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>FREE FIRE</h2>
+  <div class="grid">
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/kZ3Y5gB.jpg"><h3>110 جوهرة</h3><div class="price">50 جنيه</div><button class="btn" onclick="play('click');order('110 جوهرة FF')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/kZ3Y5gB.jpg"><h3>220 جوهرة</h3><div class="price">95 جنيه</div><button class="btn" onclick="play('click');order('220 جوهرة FF')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/kZ3Y5gB.jpg"><h3>355 جوهرة</h3><div class="price">150 جنيه</div><button class="btn" onclick="play('click');order('355 جوهرة FF')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/kZ3Y5gB.jpg"><h3>520 جوهرة</h3><div class="price">220 جنيه</div><button class="btn" onclick="play('click');order('520 جوهرة FF')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/kZ3Y5gB.jpg"><h3>1060 جوهرة</h3><div class="price">430 جنيه</div><button class="btn" onclick="play('click');order('1060 جوهرة FF')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/kZ3Y5gB.jpg"><h3>2180 جوهرة</h3><div class="price">850 جنيه</div><button class="btn" onclick="play('click');order('2180 جوهرة FF')">اطلب الان</button></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>VALORANT POINTS</h2>
+  <div class="grid">
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/3QZ6YkA.jpg"><h3>475 VP</h3><div class="price">120 جنيه</div><button class="btn" onclick="play('click');order('475 VP VALO')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/3QZ6YkA.jpg"><h3>1000 VP</h3><div class="price">240 جنيه</div><button class="btn" onclick="play('click');order('1000 VP VALO')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/3QZ6YkA.jpg"><h3>2050 VP</h3><div class="price">480 جنيه</div><button class="btn" onclick="play('click');order('2050 VP VALO')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="https://i.imgur.com/3QZ6YkA.jpg"><h3>3650 VP</h3><div class="price">840 جنيه</div><button class="btn" onclick="play('click');order('3650 VP VALO')">اطلب الان</button></div>
   </div>
 </section>
 
 <script>
-const audio = document.getElementById('tick');
-function s(){audio.currentTime=0;audio.play()}
-function order(x){window.open(`https://wa.me/201022585692?text=عايز ${x}`)}
+// 3D Background
+const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000),renderer=new THREE.WebGLRenderer({canvas:document.getElementById('canvas3d'),alpha:true});
+camera.position.z=5;renderer.setSize(innerWidth,innerHeight);
+const geo=new THREE.TorusKnotGeometry(1,0.3,100,16),mat=new THREE.MeshBasicMaterial({color:0xff0033,wireframe:true});
+for(let i=0;i<20;i++){let m=new THREE.Mesh(geo,mat);m.position.set(Math.random()*20-10,Math.random()*20-10,Math.random()*20-10);scene.add(m)}
+function animate(){requestAnimationFrame(animate);scene.children.forEach(o=>{o.rotation.x+=0.01;o.rotation.y+=0.01});renderer.render(scene,camera)}
+animate();
+
+// Sounds
+function play(id){let s=document.getElementById(id);s.currentTime=0;s.play().catch(()=>{})}
+function order(x){window.open(`https://wa.me/201022585692?text=عايز ${x} من MARO STOR`,'_blank')}
 </script>
 </body>
 </html>
