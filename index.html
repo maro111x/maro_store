@@ -2,98 +2,69 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MARO STOR - شحن الألعاب</title>
+<title>MARO STOR</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght=800;900&family=Orbitron:wght=900&display=swap');
-:root{--red:#ff0033; --dark:#050505; --card:#0d0d0d;}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo';}
-body{background:var(--dark);color:#fff;overflow-x:hidden;}
-nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#111;border:2px solid #333;border-radius:50px;padding:10px 30px;display:flex;gap:30px;z-index:999;}
-nav a{color:#fff;text-decoration:none;font-weight:900;transition:0.3s;}
-nav a:hover{color:var(--red);}
-.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;}
-.hero h1{font-family:'Orbitron';font-size:80px;color:var(--red);text-shadow:0 0 20px var(--red);}
-.hero p{font-size:24px;margin-top:10px;}
-.glow{position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(255,0,51,0.3),transparent);filter:blur(80px);animation:float 6s ease-in-out infinite;}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
-.container{max-width:1300px;margin:auto;padding:80px 20px;}
-h2{text-align:center;font-size:40px;margin-bottom:40px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;}
-.card{background:var(--card);border:2px solid #222;border-radius:18px;padding:20px;text-align:center;transition:0.3s;}
-.card:hover{border-color:var(--red);transform:translateY(-5px);}
-.price{font-size:35px;color:var(--red);font-weight:900;margin:10px 0;}
-.btn{background:var(--red);color:#000;border:none;padding:15px;width:100%;border-radius:10px;font-size:20px;font-weight:900;cursor:pointer;}
-.btn:hover{background:#fff;}
-footer{text-align:center;padding:30px;border-top:2px solid #222;margin-top:50px;}
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght=900&family=Cairo:wght=800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#030303;color:#fff;font-family:'Cairo';overflow-x:hidden}
+nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);display:flex;gap:30px;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);padding:15px 40px;border-radius:50px;border:1px solid #ff0033;z-index:1000}
+nav a{color:#fff;text-decoration:none;font-weight:900;transition:0.3s}
+nav a:hover{color:#ff0033;transform:scale(1.1)}
+.hero{height:100vh;display:flex;align-items:center;justify-content:space-between;padding:0 10%;background:radial-gradient(circle at 50% 50%, #1a0005, #030303)}
+.robot{width:400px;height:400px;background:url('https://i.imgur.com/JqYeZ9y.png') center/contain no-repeat;filter:drop-shadow(0 0 30px #ff0033);animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.hero-text h1{font-family:'Orbitron';font-size:70px;background:linear-gradient(90deg,#ff0033,#ff6600,#ff0033);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-text p{font-size:22px;margin:20px 0;color:#aaa}
+.btn{background:#ff0033;color:#000;border:none;padding:15px 40px;border-radius:10px;font-size:20px;font-weight:900;cursor:pointer;transition:0.3s;box-shadow:0 0 20px #ff0033}
+.btn:hover{background:#fff;box-shadow:0 0 40px #fff}
+.section{padding:100px 10%}
+h2{text-align:center;font-size:45px;margin-bottom:50px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+.card{background:#0a0a0a;border:2px solid #222;border-radius:20px;padding:30px;text-align:center;transition:0.4s}
+.card:hover{border-color:#ff0033;transform:translateY(-10px);box-shadow:0 10px 30px rgba(255,0,51,0.3)}
+.price{color:#ff0033;font-size:35px;font-weight:900;margin:15px 0}
 </style>
 </head>
 <body>
 
-<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+<audio id="tick" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
 
 <nav>
-  <a href="#pubg" onclick="playSound()">PUBG</a>
-  <a href="#ff" onclick="playSound()">FREE FIRE</a>
-  <a href="#valo" onclick="playSound()">VALORANT</a>
-  <a href="#contact" onclick="playSound()">CONTACT</a>
+  <a onclick="s()">PUBG</a>
+  <a onclick="s()">FREE FIRE</a>
+  <a onclick="s()">VALORANT</a>
+  <a onclick="s()">CONTACT</a>
 </nav>
 
 <section class="hero">
-  <div class="glow"></div>
-  <div>
+  <div class="hero-text">
     <h1>MARO STOR</h1>
-    <p>شحن فوري لجميع الألعاب - 100% مضمون</p>
+    <p>شحن فوري لجميع الألعاب<br>اسرع من البرق ⚡</p>
+    <button class="btn" onclick="s();window.open('https://wa.me/201022585692')">اطلب دلوقتي</button>
   </div>
+  <div class="robot"></div>
 </section>
 
-<section class="container" id="pubg">
+<section class="section">
   <h2>PUBG UC</h2>
-  <div class="grid">
+  <div class="cards">
     <div class="card">
       <h3>60 UC</h3>
       <div class="price">85 جنيه</div>
-      <button class="btn" onclick="order('60 UC')">اطلب الان</button>
+      <button class="btn" onclick="s();order('60 UC')">اطلب</button>
     </div>
     <div class="card">
       <h3>660 UC</h3>
       <div class="price">870 جنيه</div>
-      <button class="btn" onclick="order('660 UC')">اطلب الان</button>
+      <button class="btn" onclick="s();order('660 UC')">اطلب</button>
     </div>
   </div>
 </section>
-
-<section class="container" id="ff">
-  <h2>FREE FIRE</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>110 جوهرة</h3>
-      <div class="price">50 جنيه</div>
-      <button class="btn" onclick="order('110 جوهرة')">اطلب الان</button>
-    </div>
-  </div>
-</section>
-
-<section class="container" id="contact">
-  <h2>تواصل معنا</h2>
-  <p style="text-align:center">واتساب: 01022585692</p>
-</section>
-
-<footer>© 2026 MARO STOR - كل الحقوق محفوظة</footer>
 
 <script>
-const sound = document.getElementById('clickSound');
-function playSound(){
-  sound.currentTime = 0;
-  sound.play();
-}
-// خلي كل الزرارين يعملوا صوت
-document.querySelectorAll('.btn, nav a').forEach(btn => {
-  btn.addEventListener('click', playSound);
-});
-function order(item){
-  window.open(`https://wa.me/201022585692?text=عايز ${item} من MARO STOR`,'_blank');
-}
+const audio = document.getElementById('tick');
+function s(){audio.currentTime=0;audio.play()}
+function order(x){window.open(`https://wa.me/201022585692?text=عايز ${x}`)}
 </script>
 </body>
 </html>
