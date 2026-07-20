@@ -12,7 +12,10 @@ body{background:#000;color:#fff;font-family:'Cairo';overflow-x:hidden}
 nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);display:flex;gap:20px;background:rgba(0,0,0,0.8);backdrop-filter:blur(15px);padding:15px 30px;border-radius:50px;border:2px solid #ff0033;z-index:1000;flex-wrap:wrap}
 nav a{color:#fff;text-decoration:none;font-weight:900;font-size:15px;transition:0.3s}
 nav a:hover{color:#ff0033;text-shadow:0 0 10px #ff0033}
-.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column}
+.banner{position:fixed;top:85px;width:100%;background:linear-gradient(90deg,#ff0033,#00ffaa,#ff0033);padding:12px 0;overflow:hidden;white-space:nowrap;z-index:999;box-shadow:0 0 20px rgba(255,0,51,0.5)}
+.banner span{display:inline-block;color:#000;font-weight:900;font-size:18px;animation:scroll 20s linear infinite}
+@keyframes scroll{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column;padding-top:120px}
 .hero h1{font-family:'Orbitron';font-size:90px;background:linear-gradient(90deg,#ff0033,#00ffaa,#ff0033);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 2s infinite}
 @keyframes glow{0%,100%{filter:drop-shadow(0 0 10px #ff0033)}50%{filter:drop-shadow(0 0 30px #00ffaa)}}
 .section{padding:100px 5%}
@@ -41,6 +44,10 @@ h2{text-align:center;font-size:50px;margin-bottom:60px;color:#ff0033}
   <a href="#valo" onmouseenter="play('hover')" onclick="play('click')">VALORANT</a>
   <a href="#fc" onmouseenter="play('hover')" onclick="play('click')">FC MOBILE</a>
 </nav>
+
+<div class="banner">
+  <span>🔥 عرض خاص: شحن فوري خلال 60 ثانية | اضمن موقع شحن في مصر | دعم 24 ساعة | الاسعار شاملة الضريبة 🔥</span>
+</div>
 
 <section class="hero">
   <h1>MARO STOR</h1>
@@ -113,4 +120,4 @@ function orderWithID(product, inputId){
 }
 </script>
 </body>
-                                                                                      </html>
+                                                                                                                               </html>
