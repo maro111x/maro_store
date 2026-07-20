@@ -7,24 +7,26 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght=900&family=Cairo:wght=800;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#fff;font-family:'Cairo';overflow-x:hidden}
+body{background:#000;color:#fff;font-family:'Cairo';overflow-x:hidden;font-size:18px}
 #canvas3d{position:fixed;top:0;left:0;z-index:-1}
 nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);display:flex;gap:20px;background:rgba(0,0,0,0.8);backdrop-filter:blur(15px);padding:15px 30px;border-radius:50px;border:2px solid #ff0033;z-index:1000;flex-wrap:wrap}
-nav a{color:#fff;text-decoration:none;font-weight:900;font-size:15px;transition:0.3s}
+nav a{color:#fff;text-decoration:none;font-weight:900;font-size:17px;transition:0.3s}
 nav a:hover{color:#ff0033;text-shadow:0 0 10px #ff0033}
 .hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column}
-.hero h1{font-family:'Orbitron';font-size:90px;background:linear-gradient(90deg,#ff0033,#00ffaa,#ff0033);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 2s infinite}
+.hero h1{font-family:'Orbitron';font-size:100px;background:linear-gradient(90deg,#ff0033,#00ffaa,#ff0033);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 2s infinite}
+.hero p{font-size:28px;margin-top:20px}
 @keyframes glow{0%,100%{filter:drop-shadow(0 0 10px #ff0033)}50%{filter:drop-shadow(0 0 30px #00ffaa)}}
 .section{padding:100px 5%}
-h2{text-align:center;font-size:50px;margin-bottom:60px;color:#ff0033}
+h2{text-align:center;font-size:55px;margin-bottom:60px;color:#ff0033}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px}
 .card{background:linear-gradient(135deg,#0a0a0a,#1a0010);border:2px solid #333;border-radius:20px;padding:20px;text-align:center;transition:0.4s}
 .card:hover{border-color:#ff0033;transform:translateY(-15px) scale(1.03);box-shadow:0 20px 50px rgba(255,0,51,0.4)}
 .card img{width:100%;height:250px;object-fit:cover;border-radius:15px;margin-bottom:15px;border:2px solid #ff0033}
-.price{color:#00ffaa;font-size:30px;font-weight:900;margin:10px 0}
-.input-id{width:100%;padding:12px;margin:10px 0;border-radius:10px;border:2px solid #ff0033;background:#111;color:#fff;font-size:16px;text-align:center;font-family:'Cairo'}
+.card h3{font-size:22px}
+.price{color:#00ffaa;font-size:34px;font-weight:900;margin:10px 0}
+.input-id{width:100%;padding:12px;margin:10px 0;border-radius:10px;border:2px solid #ff0033;background:#111;color:#fff;font-size:18px;text-align:center;font-family:'Cairo'}
 .input-id:focus{outline:none;border-color:#00ffaa}
-.btn{background:#ff0033;color:#000;border:none;padding:14px;width:100%;border-radius:12px;font-size:18px;font-weight:900;cursor:pointer;margin-top:10px;transition:0.3s}
+.btn{background:#ff0033;color:#000;border:none;padding:14px;width:100%;border-radius:12px;font-size:20px;font-weight:900;cursor:pointer;margin-top:10px;transition:0.3s}
 .btn:hover{background:#00ffaa;transform:scale(1.05)}
 </style>
 </head>
@@ -44,17 +46,17 @@ h2{text-align:center;font-size:50px;margin-bottom:60px;color:#ff0033}
 
 <section class="hero">
   <h1>MARO STOR</h1>
-  <p style="font-size:24px;margin-top:20px">شحن فوري • اسرع تسليم • دعم 24 ساعة</p>
+  <p>شحن فوري • اسرع تسليم • دعم 24 ساعة</p>
 </section>
 
 <!-- PUBG -->
 <section class="section" id="pubg">
   <h2>PUBG UC</h2>
   <div class="grid">
-    <div class="card" onmouseenter="play('hover')"><img src="pubg60.jpg"><h3>60 UC</h3><div class="price">66 جنيه</div><small style="color:#00ffaa">شامل 5ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب معرف اللاعب ID" id="pubg60"><button class="btn" onclick="play('click');orderWithID('60 UC PUBG','pubg60')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="pubg325.jpg"><h3>325 UC</h3><div class="price">334 جنيه</div><small style="color:#00ffaa">شامل 25ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب معرف اللاعب ID" id="pubg325"><button class="btn" onclick="play('click');orderWithID('325 UC PUBG','pubg325')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="pubg660.jpg"><h3>660 UC</h3><div class="price">642 جنيه</div><small style="color:#00ffaa">شامل 25ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب معرف اللاعب ID" id="pubg660"><button class="btn" onclick="play('click');orderWithID('660 UC PUBG','pubg660')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="pubg3850.jpg"><h3>3850 UC</h3><div class="price">3126 جنيه</div><small style="color:#00ffaa">شامل 35ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب معرف اللاعب ID" id="pubg3850"><button class="btn" onclick="play('click');orderWithID('3850 UC PUBG','pubg3850')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="pubg60.jpg"><h3>60 UC</h3><div class="price">66 جنيه</div><input type="text" class="input-id" placeholder="اكتب معرف اللاعب ID" id="pubg60"><button class="btn" onclick="play('click');orderWithID('60 UC PUBG','pubg60')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="pubg325.jpg"><h3>325 UC</h3><div class="price">334 جنيه</div><input type="text" class="input-id" placeholder="اكتب معرف اللاعب ID" id="pubg325"><button class="btn" onclick="play('click');orderWithID('325 UC PUBG','pubg325')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="pubg660.jpg"><h3>660 UC</h3><div class="price">637 جنيه</div><input type="text" class="input-id" placeholder="اكتب معرف اللاعب ID" id="pubg660"><button class="btn" onclick="play('click');orderWithID('660 UC PUBG','pubg660')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="pubg3850.jpg"><h3>3850 UC</h3><div class="price">3053 جنيه</div><input type="text" class="input-id" placeholder="اكتب معرف اللاعب ID" id="pubg3850"><button class="btn" onclick="play('click');orderWithID('3850 UC PUBG','pubg3850')">اطلب الان</button></div>
   </div>
 </section>
 
@@ -62,12 +64,12 @@ h2{text-align:center;font-size:50px;margin-bottom:60px;color:#ff0033}
 <section class="section" id="valo">
   <h2>VALORANT POINTS</h2>
   <div class="grid">
-    <div class="card" onmouseenter="play('hover')"><img src="valo475.jpg"><h3>475 VP</h3><div class="price">257 جنيه</div><small style="color:#00ffaa">شامل 5ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo475"><button class="btn" onclick="play('click');orderWithID('475 VP VALO','valo475')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="valo1000.jpg"><h3>1000 VP</h3><div class="price">529 جنيه</div><small style="color:#00ffaa">شامل 25ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo1000"><button class="btn" onclick="play('click');orderWithID('1000 VP VALO','valo1000')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="valo2050.jpg"><h3>2050 VP</h3><div class="price">1033 جنيه</div><small style="color:#00ffaa">شامل 25ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo2050"><button class="btn" onclick="play('click');orderWithID('2050 VP VALO','valo2050')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="valo3650.jpg"><h3>3650 VP</h3><div class="price">1820 جنيه</div><small style="color:#00ffaa">شامل 35ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo3650"><button class="btn" onclick="play('click');orderWithID('3650 VP VALO','valo3650')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="valo5350.jpg"><h3>5350 VP</h3><div class="price">2555 جنيه</div><small style="color:#00ffaa">شامل 35ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo5350"><button class="btn" onclick="play('click');orderWithID('5350 VP VALO','valo5350')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="valo11000.jpg"><h3>11000 VP</h3><div class="price">5128 جنيه</div><small style="color:#00ffaa">شامل 35ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo11000"><button class="btn" onclick="play('click');orderWithID('11000 VP VALO','valo11000')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="valo475.jpg"><h3>475 VP</h3><div class="price">270 جنيه</div><input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo475"><button class="btn" onclick="play('click');orderWithID('475 VP VALO','valo475')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="valo1000.jpg"><h3>1000 VP</h3><div class="price">530 جنيه</div><input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo1000"><button class="btn" onclick="play('click');orderWithID('1000 VP VALO','valo1000')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="valo2050.jpg"><h3>2050 VP</h3><div class="price">1023 جنيه</div><input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo2050"><button class="btn" onclick="play('click');orderWithID('2050 VP VALO','valo2050')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="valo3650.jpg"><h3>3650 VP</h3><div class="price">1798 جنيه</div><input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo3650"><button class="btn" onclick="play('click');orderWithID('3650 VP VALO','valo3650')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="valo5350.jpg"><h3>5350 VP</h3><div class="price">2505 جنيه</div><input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo5350"><button class="btn" onclick="play('click');orderWithID('5350 VP VALO','valo5350')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="valo11000.jpg"><h3>11000 VP</h3><div class="price">4920 جنيه</div><input type="text" class="input-id" placeholder="اكتب Riot ID + TAG" id="valo11000"><button class="btn" onclick="play('click');orderWithID('11000 VP VALO','valo11000')">اطلب الان</button></div>
   </div>
 </section>
 
@@ -75,44 +77,23 @@ h2{text-align:center;font-size:50px;margin-bottom:60px;color:#ff0033}
 <section class="section" id="fc">
   <h2>FC MOBILE POINTS</h2>
   <div class="grid">
-    <div class="card" onmouseenter="play('hover')"><img src="fc40.jpg"><h3>40 نقطة</h3><div class="price">26 جنيه</div><small style="color:#00ffaa">شامل 5ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc40"><button class="btn" onclick="play('click');orderWithID('40 نقطة FC','fc40')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="fc100.jpg"><h3>100 نقطة</h3><div class="price">58 جنيه</div><small style="color:#00ffaa">شامل 5ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc100"><button class="btn" onclick="play('click');orderWithID('100 نقطة FC','fc100')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="fc520.jpg"><h3>520 نقطة</h3><div class="price">287 جنيه</div><small style="color:#00ffaa">شامل 25ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc520"><button class="btn" onclick="play('click');orderWithID('520 نقطة FC','fc520')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="fc1070.jpg"><h3>1070 نقطة</h3><div class="price">550 جنيه</div><small style="color:#00ffaa">شامل 25ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc1070"><button class="btn" onclick="play('click');orderWithID('1070 نقطة FC','fc1070')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="fc2200.jpg"><h3>2200 نقطة</h3><div class="price">1085 جنيه</div><small style="color:#00ffaa">شامل 35ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc2200"><button class="btn" onclick="play('click');orderWithID('2200 نقطة FC','fc2200')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="fc5750.jpg"><h3>5750 نقطة</h3><div class="price">2660 جنيه</div><small style="color:#00ffaa">شامل 35ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc5750"><button class="btn" onclick="play('click');orderWithID('5750 نقطة FC','fc5750')">اطلب الان</button></div>
-    <div class="card" onmouseenter="play('hover')"><img src="fc12000.jpg"><h3>12000 نقطة</h3><div class="price">5285 جنيه</div><small style="color:#00ffaa">شامل 35ج ضريبة</small><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc12000"><button class="btn" onclick="play('click');orderWithID('12000 نقطة FC','fc12000')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="fc40.jpg"><h3>40 نقطة</h3><div class="price">26 جنيه</div><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc40"><button class="btn" onclick="play('click');orderWithID('40 نقطة FC','fc40')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="fc100.jpg"><h3>100 نقطة</h3><div class="price">57 جنيه</div><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc100"><button class="btn" onclick="play('click');orderWithID('100 نقطة FC','fc100')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="fc520.jpg"><h3>520 نقطة</h3><div class="price">287 جنيه</div><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc520"><button class="btn" onclick="play('click');orderWithID('520 نقطة FC','fc520')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="fc1070.jpg"><h3>1070 نقطة</h3><div class="price">545 جنيه</div><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc1070"><button class="btn" onclick="play('click');orderWithID('1070 نقطة FC','fc1070')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="fc2200.jpg"><h3>2200 نقطة</h3><div class="price">1075 جنيه</div><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc2200"><button class="btn" onclick="play('click');orderWithID('2200 نقطة FC','fc2200')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="fc5750.jpg"><h3>5750 نقطة</h3><div class="price">2597 جنيه</div><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc5750"><button class="btn" onclick="play('click');orderWithID('5750 نقطة FC','fc5750')">اطلب الان</button></div>
+    <div class="card" onmouseenter="play('hover')"><img src="fc12000.jpg"><h3>12000 نقطة</h3><div class="price">5160 جنيه</div><input type="text" class="input-id" placeholder="اكتب UID اللاعب" id="fc12000"><button class="btn" onclick="play('click');orderWithID('12000 نقطة FC','fc12000')">اطلب الان</button></div>
   </div>
 </section>
 
 <script>
-// 3D DRAGON BACKGROUND
+// 3D Background
 const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000),renderer=new THREE.WebGLRenderer({canvas:document.getElementById('canvas3d'),alpha:true});
-camera.position.z=8;renderer.setSize(innerWidth,innerHeight);
-
-// Dragon particles
-const particlesGeometry = new THREE.BufferGeometry();
-const particlesCount = 2000;
-const posArray = new Float32Array(particlesCount * 3);
-for(let i = 0; i < particlesCount * 3; i++){posArray[i] = (Math.random() - 0.5) * 50}
-particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-const particlesMaterial = new THREE.PointsMaterial({size: 0.02, color: 0xff0033});
-const particleMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-scene.add(particleMesh);
-
-// Dragon wireframe
-const dragonGeo = new THREE.TorusKnotGeometry(2, 0.6, 200, 32);
-const dragonMat = new THREE.MeshBasicMaterial({color: 0xff0033, wireframe: true, transparent: true, opacity: 0.3});
-const dragon = new THREE.Mesh(dragonGeo, dragonMat);
-scene.add(dragon);
-
-function animate(){
-  requestAnimationFrame(animate);
-  dragon.rotation.x += 0.005;
-  dragon.rotation.y += 0.008;
-  particleMesh.rotation.y += 0.001;
-  renderer.render(scene,camera)
-}
+camera.position.z=5;renderer.setSize(innerWidth,innerHeight);
+const geo=new THREE.TorusKnotGeometry(1,0.3,100,16),mat=new THREE.MeshBasicMaterial({color:0xff0033,wireframe:true});
+for(let i=0;i<25;i++){let m=new THREE.Mesh(geo,mat);m.position.set(Math.random()*20-10,Math.random()*20-10,Math.random()*20-10);scene.add(m)}
+function animate(){requestAnimationFrame(animate);scene.children.forEach(o=>{o.rotation.x+=0.01;o.rotation.y+=0.01});renderer.render(scene,camera)}
 animate();
 window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)})
 
@@ -132,4 +113,4 @@ function orderWithID(product, inputId){
 }
 </script>
 </body>
-  </html>
+                                                                                                                                 </html>
